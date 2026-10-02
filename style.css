@@ -1,0 +1,326 @@
+* { box-sizing: border-box; }
+
+:root {
+  --bg: #fff7fa;
+  --ink: #351d28;
+  --muted: #806b73;
+  --pink: #ff5c8a;
+  --pink-dark: #e84474;
+  --soft: #ffe5ee;
+  --white: rgba(255,255,255,.78);
+  --shadow: 0 22px 60px rgba(163, 55, 91, .12);
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  color: var(--ink);
+  background:
+    radial-gradient(circle at 10% 10%, #ffe3ed 0, transparent 28%),
+    radial-gradient(circle at 90% 30%, #ffe9f1 0, transparent 25%),
+    var(--bg);
+  font-family: "DM Sans", sans-serif;
+  overflow-x: hidden;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  opacity: .18;
+  background-image: radial-gradient(#ff8eac 1px, transparent 1px);
+  background-size: 22px 22px;
+}
+
+main {
+  width: min(1100px, 92%);
+  margin: auto;
+  position: relative;
+  z-index: 2;
+}
+
+.card {
+  background: var(--white);
+  border: 1px solid rgba(255,255,255,.9);
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-radius: 32px;
+}
+
+.hero {
+  min-height: 88vh;
+  margin: 6vh 0 12vh;
+  padding: clamp(42px, 8vw, 90px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero::after {
+  content: "♡";
+  position: absolute;
+  right: 7%;
+  top: 13%;
+  color: rgba(255,92,138,.14);
+  font-size: 19rem;
+  line-height: 1;
+  transform: rotate(12deg);
+}
+
+.eyebrow {
+  color: var(--pink-dark);
+  font-weight: 700;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  font-size: .78rem;
+  margin-bottom: 22px;
+}
+
+h1, h2 {
+  font-family: "Playfair Display", serif;
+  margin: 0;
+}
+
+h1 {
+  font-size: clamp(3.3rem, 8vw, 7rem);
+  line-height: .95;
+  letter-spacing: -.055em;
+  max-width: 900px;
+}
+
+h1 span {
+  color: var(--pink);
+  position: relative;
+}
+
+h1 span::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 4%;
+  bottom: -8px;
+  height: 10px;
+  background: #ffc0d3;
+  border-radius: 100%;
+  z-index: -1;
+  transform: rotate(-2deg);
+}
+
+.hero-copy {
+  max-width: 630px;
+  color: var(--muted);
+  font-size: 1.1rem;
+  line-height: 1.8;
+  margin: 30px 0;
+}
+
+.primary {
+  border: 0;
+  background: var(--ink);
+  color: white;
+  padding: 15px 22px;
+  border-radius: 999px;
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 10px 25px rgba(53,29,40,.18);
+  transition: .25s ease;
+}
+
+.primary:hover {
+  transform: translateY(-3px) scale(1.02);
+  background: var(--pink-dark);
+}
+
+.scroll-hint {
+  position: absolute;
+  bottom: 28px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: #a28c94;
+  font-size: .8rem;
+}
+
+.section-title {
+  display: flex;
+  align-items: baseline;
+  gap: 15px;
+  margin-bottom: 28px;
+}
+
+.section-title span {
+  color: var(--pink);
+  font-weight: 800;
+  font-size: .8rem;
+}
+
+.section-title h2 {
+  font-size: clamp(2rem, 5vw, 3.5rem);
+}
+
+.memory-section, .letter-wrap, .promise {
+  margin-bottom: 15vh;
+}
+
+.reasons {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.reason {
+  padding: 30px;
+  transition: transform .3s ease;
+}
+
+.reason:hover { transform: translateY(-7px); }
+
+.icon {
+  width: 54px;
+  height: 54px;
+  display: grid;
+  place-items: center;
+  border-radius: 18px;
+  background: var(--soft);
+  font-size: 1.5rem;
+  margin-bottom: 22px;
+}
+
+.reason h3 { margin: 0 0 10px; font-size: 1.2rem; }
+.reason p, .letter p, .promise > p:not(.big-quote) {
+  color: var(--muted);
+  line-height: 1.8;
+}
+
+.letter {
+  max-width: 780px;
+  margin: auto;
+  padding: clamp(32px, 7vw, 65px);
+  position: relative;
+  font-family: "Playfair Display", serif;
+  font-size: 1.15rem;
+  line-height: 1.8;
+}
+
+.letter .stamp {
+  position: absolute;
+  right: 28px;
+  top: 25px;
+  width: 55px;
+  height: 55px;
+  border: 1px solid #ffadc4;
+  color: var(--pink);
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  transform: rotate(12deg);
+}
+
+.signoff { margin-top: 32px; }
+
+.promise {
+  padding: clamp(30px, 6vw, 55px);
+  text-align: center;
+}
+
+.promise .section-title { justify-content: center; }
+
+.big-quote {
+  font-family: "Playfair Display", serif;
+  font-size: clamp(2rem, 6vw, 4.5rem);
+  line-height: 1.1;
+  margin: 30px auto 15px;
+  max-width: 800px;
+  color: var(--pink-dark);
+}
+
+footer {
+  text-align: center;
+  padding: 10px 0 50px;
+  color: #9a858d;
+  font-size: .9rem;
+}
+
+.hearts {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 5;
+  overflow: hidden;
+}
+
+.float-heart {
+  position: absolute;
+  bottom: -30px;
+  animation: floatUp linear forwards;
+  opacity: .85;
+}
+
+@keyframes floatUp {
+  to {
+    transform: translateY(-110vh) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+.modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(53,29,40,.42);
+  backdrop-filter: blur(8px);
+  display: grid;
+  place-items: center;
+  padding: 20px;
+  z-index: 10;
+  opacity: 0;
+  pointer-events: none;
+  transition: .3s ease;
+}
+
+.modal.show {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.modal-box {
+  width: min(540px, 100%);
+  background: #fffafb;
+  border-radius: 30px;
+  padding: 45px 35px;
+  text-align: center;
+  position: relative;
+  box-shadow: 0 30px 90px rgba(0,0,0,.2);
+  transform: translateY(20px) scale(.96);
+  transition: .3s ease;
+}
+
+.modal.show .modal-box { transform: none; }
+
+.modal-heart { font-size: 3.2rem; }
+.modal-box h2 { font-size: 2.7rem; margin: 10px 0; }
+.modal-box p { color: var(--muted); line-height: 1.7; }
+.highlight { color: var(--pink-dark) !important; font-weight: 800; font-size: 1.1rem; }
+
+.close {
+  position: absolute;
+  right: 17px;
+  top: 13px;
+  border: 0;
+  background: transparent;
+  font-size: 2rem;
+  color: #a99099;
+  cursor: pointer;
+}
+
+@media (max-width: 760px) {
+  .hero { min-height: 78vh; margin-top: 3vh; padding: 38px 25px; }
+  .hero::after { font-size: 10rem; top: 18%; }
+  .reasons { grid-template-columns: 1fr; }
+  .letter { font-size: 1.05rem; }
+}
